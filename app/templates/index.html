@@ -1,33 +1,65 @@
-{% extends "layout.html" %}
-{% block content %}
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Last Name</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Social Security</th>
-        <th scope="col">Test 1</th>
-        <th scope="col">Test 2</th>
-        <th scope="col">Test 3</th>
-        <th scope="col">Test 4</th>
-        <th scope="col">Final</th>
-        <th scope="col">Grade</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for grade in grades %}
-    <tr>
-        <td><a href="view/{{grade.id}}">{{ grade.Last_name }}</a></td>
-        <td>{{ grade.First_name }}</td>
-        <td>{{ grade.SSN }}</td>
-        <td>{{ grade.Test1 }}</td>
-        <td>{{ grade.Test2 }}</td>
-        <td>{{ grade.Test3 }}</td>
-        <td>{{ grade.Test4 }}</td>
-        <td>{{ grade.Final }}</td>
-        <td>{{ grade.Grade }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-{% endblock %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.0.1">
+    <title>{{ title }}</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/floating-labels/">
+
+    <!-- Bootstrap core CSS -->
+    <link href= "{{ url_for('static',filename='assets/dist/css/bootstrap.css') }}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href= "{{ url_for('static',filename='styles/floating-labels.css') }}" rel="stylesheet">
+</head>
+<body>
+<form class="form-signin">
+    <div class="text-center mb-4">
+        <img class="mb-4"  src= "{{ url_for('static',filename='assets/brand/bootstrap-solid.svg') }}" alt="" width="72" height="72">
+        <h1 class="h2 mb-3 font-weight-normal">Biostats Data Manager</h1>
+        <br/>
+        <h3 class="h4 mb-3 font-weight-normal"> Sign in</h3>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputEmail">Email address</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <a href="/register" class="card-link btn btn-lg btn-primary btn-block">Create an Account</a>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; 2020</p>
+</form>
+</body>
+</html>
