@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="/edit/{{grade.id}}" method="post">
+    <div class="row">
+        <div class="col">
+            <label for="Last_name">Last Name</label>
+            <input id="Last_name" type="text" class="form-control" placeholder="Last Name" name="Last_Name" value="{{grade.Last_name}}">
+        </div>
+        <div class="col">
+            <label for="First_name">First Name</label>
+            <input id="First_name" type="text" class="form-control" placeholder="First Name"
+                   name="First_name" value="{{grade.First_name}}">
+        </div>
+        <div class="col">
+            <label for="SSN">Social Security Number</label>
+            <input id="SSN" type="text" class="form-control" placeholder="Social Security" name="SSN" value="{{grade.SSN}}">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label for="Test1">Test 1 </label>
+            <input id="Test1" type="text" class="form-control" placeholder="Test 1 " name="Test1" value="{{grade.Test1}}">
+        </div>
+        <div class="col">
+            <label for="Test2"> Test 2</label>
+            <input id="Test2" type="text" class="form-control" placeholder=" Test 2" name="Test2" value="{{grade.Test2}}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label for="Test3">Test 3</label>
+
+            <input id="Test3" type="text" class="form-control" placeholder=" Test 3"
+                   name="Test3" value="{{grade.Test3}}">
+        </div>
+        <div class="col">
+            <label for="Test4"> Test 4</label>
+            <input id="Test4" type="text" class="form-control" placeholder="Test 4" name="Test4" value="{{grade.Test4}}">
+        </div>
+        </div>
+        <div class="col">
+            <label for="Final">Final</label>
+            <input id="Final" type="text" class="form-control" placeholder="Final" name="Final" value="{{grade.Final}}">
+        </div>
+    </div>
+        <div class="col">
+            <label for="Grade">Grade</label>
+            <input id="Grade" type="text" class="form-control" placeholder="Grade" name="Grade" value="{{grade.Grade}}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}
