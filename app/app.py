@@ -57,7 +57,7 @@ def form_update_post(grade_id):
 
 @app.route('/grades/new', methods=['GET'])
 def form_insert_get():
-    return render_template('new.html', title='New grades Form')
+    return render_template('new.html', title='New grade Form')
 
 
 @app.route('/grades/new', methods=['POST'])
