@@ -2,7 +2,6 @@ from typing import List, Dict
 import simplejson as json
 from flask import Flask, request, Response, redirect
 from flask import render_template
-from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
 app = Flask(__name__)
@@ -22,7 +21,7 @@ def index():
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
-    return render_template('template/index.html', title='Home', user=user, grades=result)
+    return render_template('index.html', title='Home', user=user, grades=result)
 
 
 @app.route('/view/<int:grade_id>', methods=['GET'])
@@ -30,7 +29,7 @@ def record_view(grade_id):
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport WHERE id=%s', grade_id)
     result = cursor.fetchall()
-    return render_template('template/view.html', title='View Form', grade=result[0])
+    return render_template('view.html', title='View Form', grade=result[0])
 
 
 @app.route('/edit/<int:grade_id>', methods=['GET'])
@@ -67,8 +66,8 @@ def form_insert_post():
                  request.form.get('Test1'), request.form.get('Test2'),
                  request.form.get('Test3'), request.form.get('Test4'),
                  request.form.get('Final'), request.form.get('Grade'))
-    sql_insert_query = """INSERT INTO tblGradesImport (Last_name,First_name,Test1,Test2,Test3,Test4,Final, Grade) VALUES (%s, %s,
-    %s, %s,%s, %s,%s, %s) """
+    sql_insert_query = """INSERT INTO tblGradesImport (Last_name,First_name,Test1,Test2,Test3,Test4,Final, Grade) 
+                VALUES (%s, %s,%s, %s,%s, %s,%s, %s) """
     cursor.execute(sql_insert_query, inputData)
     mysql.get_db().commit()
     return redirect("/", code=302)
@@ -103,21 +102,47 @@ def api_retrieve(grade_id) -> str:
     return resp
 
 
-@app.route('/api/v1/grades/', methods=['POST'])
-def api_add() -> str:
-    resp = Response(status=201, mimetype='application/json')
+@app.route('/api/v1/grades/<int:grade_id>', methods=['PUT'])
+def api_edit(city_id) -> str:
+    cursor = mysql.get_db().cursor()
+    content = request.json
+    inputData = (content['Last_name'], content['First_name'], content['SSN'],
+                 content['Test1'], content['Test2'],
+                 content['Test3'], content['Test4'],
+                 content['Final'], content['Grade'],grade_id)
+    sql_update_query = """UPDATE tblGradesImport t SET  t.Last_name = %s, t.First_name = %s, t.SSN = %s, 
+         t.Test1 = %s, t.Test2 = %s, t.Test3 = %s, t.Test4 = %s, t.Final = %s, t.Grade = %s WHERE t.id = %s"""
+    cursor.execute(sql_update_query, inputData)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
-@app.route('/api/v1/grades/<int:grade_id>', methods=['PUT'])
-def api_edit(city_id) -> str:
+@app.route('/api/v1/grades/', methods=['POST'])
+def api_add() -> str:
+
+    content = request.json
+
+    cursor = mysql.get_db().cursor()
+    inputData = (content['Last_name'], content['First_name'], content['SSN'],
+                 content['Test1'], content['Test2'],
+                 content['Test3'], content['Test4'],
+                 content['Final'], content['Grade'], grade_id)
+    sql_update_query = """UPDATE tblGradesImport t SET  t.Last_name = %s, t.First_name = %s, t.SSN = %s, 
+             t.Test1 = %s, t.Test2 = %s, t.Test3 = %s, t.Test4 = %s, t.Final = %s, t.Grade = %s WHERE t.id = %s"""
+    cursor.execute(sql_update_query, inputData)
+    mysql.get_db().commit()
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
 @app.route('/api/grades/<int:grade_id>', methods=['DELETE'])
 def api_delete(grade_id) -> str:
-    resp = Response(status=210, mimetype='application/json')
+    cursor = mysql.get_db().cursor()
+    sql_delete_query = """DELETE FROM tblGradesImport WHERE id = %s """
+    cursor.execute(sql_delete_query, grade_id)
+    mysql.get_db().commit()
+    resp = Response(status=200, mimetype='application/json')
     return resp
 
 
