@@ -1,5 +1,5 @@
-import simplejson as json
 from typing import List, Dict
+import simplejson as json
 from flask import Flask, request, Response, redirect
 from flask import render_template
 from flaskext.mysql import MySQL
@@ -22,7 +22,7 @@ def index():
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
-    return render_template('index.html', title='Home', user=user, grades=result)
+    return render_template('template/index.html', title='Home', user=user, grades=result)
 
 
 @app.route('/view/<int:grade_id>', methods=['GET'])
@@ -30,7 +30,7 @@ def record_view(grade_id):
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport WHERE id=%s', grade_id)
     result = cursor.fetchall()
-    return render_template('view.html', title='View Form', grade=result[0])
+    return render_template('template/view.html', title='View Form', grade=result[0])
 
 
 @app.route('/edit/<int:grade_id>', methods=['GET'])
