@@ -1,5 +1,5 @@
-from typing import List, Dict
 import simplejson as json
+from typing import List, Dict
 from flask import Flask, request, Response, redirect
 from flask import render_template
 from flaskext.mysql import MySQL
@@ -18,7 +18,7 @@ mysql.init_app(app)
 
 @app.route('/', methods=['GET'])
 def index():
-    user = {'username': 'Ssempax Project'}
+    user = {'username': 'Grades Project'}
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
