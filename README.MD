@@ -1,23 +1,23 @@
-# Web Individual project
+# Web Individual Final Project
 
-## project Description 
+## Project Description 
 This project is a homework assignment to teach how to get Pycharm setup with Docker, Flask, MySQL, and Postman
 
 
-### Post Screenshots
+### Login Screenshots
+![login](screenshots/)
+
+## Post Screenshots
+![post](screenshots/)
+
+### GET Screenshots 
 ![get](screenshots/)
 
-## Postman Screenshots
-![put](screenshots/)
-
-### Postman Screenshots 
+### Deleted Screenshots
 ![delete](screenshots/)
 
-### Postman Screenshots
-![postman](screenshots/)
-
-### Postman Screenshots
-![](screenshots/)
+### Put Screenshots
+![put](screenshots/)
 
 ### PostmanScreenshots
 ![bootstrap](screenshots/)
