@@ -45,3 +45,16 @@ INSERT INTO tblGradesImport (Last_name, First_name, SSN, Test1, Test2, Test3, Te
     ('Branklin','  "Yenny"','      "234-56-2890"',' 50.0',     1.0,    90.0,    80.0,'    90.0','   "B-"'),
     ('Meorge','    "Zoy"','        "345-67-3901"',' 40.0',     1.0,    11.0,    -1.0,'     4.0','   "B"'),
     ('Teffalump',' "Marvey"','     "632-79-9439"',' 30.0',     1.0,    20.0,    30.0,'    40.0','   "C"');
+
+    CREATE TABLE IF NOT EXISTS userAccount
+(
+    `id`       int AUTO_INCREMENT,
+    `fName`    VARCHAR(20) CHARACTER SET utf8,
+    `lName`    VARCHAR(20) CHARACTER SET utf8,
+    `email`    VARCHAR(50),
+    `password` VARCHAR(20),
+    `verified` INT,
+    PRIMARY KEY (`id`)
+);
+
+INSERT INTO userAccount (fName, lName, email, password, verified) VALUE ('John', 'Kitinda', 'dog@gmail.com', 'abc', 1);

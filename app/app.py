@@ -18,11 +18,11 @@ mysql.init_app(app)
 
 @app.route('/')
 def sign_in():
-    user = {'username': "'Ssempax's Project'"}
+    user = {'username': "Ssempax's Project"}
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
-    return render_template('index.html', title='Grades Sign in ', user=user, grades=result)
+    return render_template('/index.html', title='Grades Sign in ', user=user, grades=result)
 
 
 @app.route('/signon')
