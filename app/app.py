@@ -17,21 +17,21 @@ mysql.init_app(app)
 
 
 @app.route('/')
-def sign_in():
+def signin():
     user = {'username': "Ssempax's Project"}
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
-    return render_template('/index.html', title='Grades Sign in ', user=user, grades=result)
+    return render_template('index.html', title='Grades Sign in ', user=user, grades=result)
 
 
-@app.route('/signon')
-def signon():
-    user = {'username':"Ssempax's Project"}
+@app.route('/enroll')
+def enroll():
+    user = {'username': "Ssempax's Project"}
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblGradesImport')
     result = cursor.fetchall()
-    return render_template('register.html', title='Register Form', user=user, grade=result)
+    return render_template('enroll.html', title='Enroll Form', user=user, grade=result)
 
 
 @app.route('/home', methods=['GET'])
@@ -139,7 +139,6 @@ def api_edit(grade_id) -> str:
 
 @app.route('/api/v1/grades/', methods=['POST'])
 def api_add() -> str:
-
     content = request.json
 
     cursor = mysql.get_db().cursor()
