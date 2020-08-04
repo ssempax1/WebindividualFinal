@@ -5,13 +5,10 @@ This project is a homework assignment to teach how to get Pycharm setup with Doc
 
 
 ### Login Screenshots
-![login](screenshots/)
-
-## Post Screenshots
-![post](screenshots/)
+![login](screenshots/login.PNG)
 
 ### GET Screenshots 
-![get](screenshots/)
+![get](screenshots/json.PNG)
 
 ### Deleted Screenshots
 ![delete](screenshots/)
@@ -20,4 +17,4 @@ This project is a homework assignment to teach how to get Pycharm setup with Doc
 ![put](screenshots/)
 
 ### PostmanScreenshots
-![bootstrap](screenshots/)
+![bootstrap](screenshots/postman.PNG)
